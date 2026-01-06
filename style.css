@@ -9,12 +9,12 @@
 body {
     background-color: #000000; /* Deep Black */
     /* Subtle Cheetah Pattern Global */
-    background-image: url('public/assets/panther_pattern.png');
+    background-image: url('assets/panther_pattern.png');
     background-repeat: repeat;
     background-size: 300px;
     background-blend-mode: overlay;
     /* Use a dark gradient to blend the pattern down to subtlety */
-    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('public/assets/panther_pattern.png'); 
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('assets/panther_pattern.png'); 
     background-attachment: fixed;
     color: #fff;
     overflow-x: hidden;
@@ -200,12 +200,12 @@ html {
     
     /* Pastel Pink Background + Subtle Cheetah Overlay */
     background-color: #d9a9c9; /* User Requested Color */
-    background-image: url('/assets/panther_pattern.png');
+    background-image: url('assets/panther_pattern.png');
     background-repeat: repeat;
     background-size: 300px;
     background-blend-mode: overlay;
     /* Blend with pastel pink */
-    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('/assets/panther_pattern.png');
+    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('assets/panther_pattern.png');
 }
 
 .section-title {
@@ -379,11 +379,11 @@ html {
     
     /* Shared Pastel Pink Background */
     background-color: #d9a9c9;
-    background-image: url('/assets/panther_pattern.png');
+    background-image: url('assets/panther_pattern.png');
     background-repeat: repeat;
     background-size: 300px;
     background-blend-mode: overlay;
-    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('/assets/panther_pattern.png');
+    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('assets/panther_pattern.png');
 }
 
 .fixed-title {

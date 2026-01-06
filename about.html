@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meech O'Clock | My Story</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;700&family=Anton&display=swap" rel="stylesheet">
+</head>
+<body class="panther-bg">
+    <main id="app">
+        <section id="bio" class="bio-article">
+            <!-- Profile Header -->
+            <header class="article-header">
+                <div class="profile-image-wrapper">
+                    <img src="/assets/owner.png" alt="Michelle Watson" class="profile-image">
+                </div>
+                <h1 class="article-title">My Story</h1>
+                <p class="article-subtitle">
+                    Chasing sunsets, city lights, and everything in between. 
+                    <br>This is my world, freeze-framed.
+                </p>
+            </header>
+
+            <!-- Article Content -->
+            <article class="article-content">
+                <div class="story-section">
+                    <h2 class="section-heading">Beginnings</h2>
+                    <p class="article-text">
+                        It all started with a disposable camera and a fascination with the way light hits buildings at golden hour. I was fifteen, wandering the streets of my hometown, noticing how every corner held a different story, every shadow played with the edges of reality. Those first photographs were terrible—blurry, poorly composed, with the unmistakable fingerprint of someone who had no idea what they were doing. But they were mine, and they captured something real: the beginning of a lifelong obsession with freezing moments in time.
+                    </p>
+                    
+                    <p class="article-text">
+                        The camera became my third eye, my way of seeing the world when my own eyes weren't enough. Through the lens, I noticed details I'd otherwise miss—the crack in the pavement that looked like a lightning bolt, the way strangers' faces changed when they thought no one was watching, the secret lives of buildings after midnight. Each photograph was a question, and each answer led to more questions.
+                    </p>
+                </div>
+                
+                <div class="story-section">
+                    <h2 class="section-heading">The City That Never Sleeps</h2>
+                    <p class="article-text">
+                        New York found me before I found it. I arrived with a backpack, three cameras, and exactly enough money for two months rent. The city didn't welcome me so much as swallow me whole. The noise, the energy, the constant motion—it was overwhelming and intoxicating. Every street corner was a photograph waiting to happen. Every subway ride was a gallery of human stories.
+                    </p>
+                    
+                    <p class="article-text">
+                        I learned to shoot in the rain, in the snow, in the sweltering summer heat that made the asphalt shimmer. I learned that the best light comes at the edges of the day, that the most honest moments happen when people forget you're there. I spent nights on rooftops, mornings in diners, afternoons wandering through neighborhoods I had no business being in. The city taught me about photography, but it taught me more about being human.
+                    </p>
+                </div>
+                
+                <div class="story-section">
+                    <h2 class="section-heading">Chasing Light</h2>
+                    <p class="article-text">
+                        There's something magical about the way light behaves differently in every place. Los Angeles light is soft and forgiving, golden and warm. It makes everything look like a movie scene. Texas light is harsh and honest, bleaching colors and casting sharp shadows that tell no lies. Florida light is tropical and wild, filtered through palm leaves and humidity, creating a world that feels both real and dreamlike.
+                    </p>
+                    
+                    <p class="article-text">
+                        I became a student of light, chasing it across time zones and state lines. I learned to read weather patterns, to predict when the fog would roll in, when the storm clouds would break. Each place taught me something new about how light shapes our perception of reality, how it can make the ordinary look extraordinary and the extraordinary look like something out of a dream.
+                    </p>
+                </div>
+                
+                <div class="story-section">
+                    <h2 class="section-heading">The People Who Stay</h2>
+                    <p class="article-text">
+                        For all the landscapes and cityscapes, it's the portraits that haunt me. The stranger who told me his life story while we waited for a bus. The dancer who practiced in an empty studio at midnight. The old woman who showed me photographs of her youth, her hands trembling as she touched the faded images. These encounters taught me that photography isn't just about capturing images—it's about connection.
+                    </p>
+                    
+                    <p class="article-text">
+                        Everyone has a story, and everyone wants to be seen. Really seen. The camera became a bridge between my world and theirs, a way of saying "I see you, and your story matters." Some of these people became friends, some became muses, some disappeared as quickly as they appeared. But they all left their mark on my work and on my heart.
+                    </p>
+                </div>
+
+                <!-- Article Footer -->
+                <footer class="article-footer">
+                    <div class="contact-links">
+                        <a href="#" class="contact-link">Email</a>
+                        <span class="separator">/</span>
+                        <a href="#" class="contact-link">Instagram</a>
+                        <span class="separator">/</span>
+                        <a href="#" class="contact-link">Twitter</a>
+                    </div>
+
+                    <div class="footer-signature">
+                        Michelle Watson &copy; 2026
+                    </div>
+                </footer>
+            </article>
+        </section>
+    </main>
+    <script>
+        // Navigation HTML
+        const navHTML = `
+            <div class="cheetah-header"></div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="global-nav" id="globalNav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link nav-home">Home</a></li>
+                    <li><a href="/world.html" class="nav-link nav-world">World Tour</a></li>
+                    <li><a href="/diary.html" class="nav-link nav-diary">Visual Diary</a></li>
+                    <li><a href="/about.html" class="nav-link nav-story">The Story</a></li>
+                </ul>
+            </nav>
+        `;
+
+        document.body.insertAdjacentHTML('afterbegin', navHTML);
+
+        // Navigation logic
+        const toggle = document.getElementById('navToggle');
+        const nav = document.getElementById('globalNav');
+        const path = window.location.pathname.replace(/^\/|\.html$/g, '');
+
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            const linkPath = link.getAttribute('href').replace(/^\/|\.html$/g, '');
+            if (linkPath === path || (linkPath === '' && path === 'index')) {
+                link.classList.add('active-page');
+            }
+        });
+
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+    </script>
+</body>
+</html>

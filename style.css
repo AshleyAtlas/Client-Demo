@@ -1,0 +1,734 @@
+/* Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Default font */
+}
+
+body {
+    background-color: #000000; /* Deep Black */
+    /* Subtle Cheetah Pattern Global */
+    background-image: url('public/assets/panther_pattern.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-blend-mode: overlay;
+    /* Use a dark gradient to blend the pattern down to subtlety */
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('public/assets/panther_pattern.png'); 
+    background-attachment: fixed;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Global Navigation --- */
+.nav-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    mix-blend-mode: difference; /* Visible everywhere */
+}
+
+.nav-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: #fff;
+}
+.nav-toggle.active span:nth-child(2) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background-color: #fff;
+}
+
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.global-nav.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.nav-list {
+    list-style: none;
+    text-align: center;
+}
+
+.nav-link {
+    display: block;
+    font-size: 3rem;
+    color: #fff;
+    text-decoration: none;
+    margin: 1rem 0;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+}
+
+/* Home – Neon Purple */
+.nav-link.nav-home:hover {
+    color: #a855f7;
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #a855f7;
+}
+
+/* World Tour – Neon Pink */
+.nav-link.nav-world:hover {
+    color: #ff69b4;
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #ff69b4;
+}
+
+/* Visual Diary – Neon Light Blue */
+.nav-link.nav-diary:hover {
+    color: #4fd1ff;
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #4fd1ff;
+}
+
+/* The Story – Neon Red */
+.nav-link.nav-story:hover {
+    color: #ff3b3b;
+    transform: scale(1.1);
+    text-shadow: 0 0 20px #ff3b3b;
+}
+
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+
+/* Part 1: Hero Section - CINEMATIC ZERO MARGIN */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* Ensures filling the screen */
+    z-index: 1;
+    opacity: 0.6; /* Dark cinematic feel */
+}
+
+.logo-overlay {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    opacity: 0;
+    animation: fadeInLogo 2s ease-out forwards 0.5s;
+}
+
+@keyframes fadeInLogo {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero-title {
+    font-family: 'Dancing Script', cursive; /* Script font */
+    font-size: 8rem; /* Large movie title size */
+    color: #fff; /* White */
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 105, 180, 0.5); /* Glow */
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Part 2: The World Tour (Map) */
+.world-tour-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 40px; /* Reduced header space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+    /* Pastel Pink Background + Subtle Cheetah Overlay */
+    background-color: #d9a9c9; /* User Requested Color */
+    background-image: url('/assets/panther_pattern.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-blend-mode: overlay;
+    /* Blend with pastel pink */
+    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('/assets/panther_pattern.png');
+}
+
+.section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 5rem;
+    color: #000; /* Bold Black */
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    letter-spacing: 4px; /* Y2K style spacing */
+    text-shadow: 4px 4px 0px #fff; /* Pop effect */
+    z-index: 2;
+    text-align: center;
+}
+
+.map-container {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    /* Removed box/border to just show map on pink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.world-map {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.3));
+}
+
+/* Pulsing Pins */
+.map-pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #000; /* Distinct Black Pin */
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+.map-pin::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 1.5s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+    }
+    100% {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
+}
+
+.map-pin:hover {
+    transform: scale(1.3);
+    background-color: #ff69b4;
+}
+
+
+/* Part 3: Through My Eyes */
+.through-my-eyes-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.camcorder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.grid-item {
+    position: relative;
+    aspect-ratio: 4/3; /* Traditional camcorder aspect ratio */
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.1) brightness(0.9); /* Slight cinematic moody look */
+}
+
+/* Camcorder Overlay */
+.rec-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through if we add interaction later */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    font-family: 'Courier New', monospace; /* Digital look */
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.rec-status {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.rec-dot {
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: blink 1s infinite;
+}
+
+.timecode {
+    align-self: flex-end;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.battery-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1rem;
+    color: #0f0; /* Green battery */
+}
+
+/* Part 4: Visual Diary (Netflix-style Layout) */
+.my-muse-section {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 60px;
+    padding-bottom: 4rem;
+    display: block;
+    
+    /* Shared Pastel Pink Background */
+    background-color: #d9a9c9;
+    background-image: url('/assets/panther_pattern.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-blend-mode: overlay;
+    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('/assets/panther_pattern.png');
+}
+
+.fixed-title {
+    position: static;
+    text-align: center;
+    margin: 0 auto 3rem auto;
+    font-size: 3rem;
+    color: #4b0082;
+    text-shadow: 2px 2px 0px #fff;
+    background: none;
+    padding: 0;
+}
+
+/* Primary Gallery Grid */
+.primary-gallery {
+    margin-bottom: 4rem;
+}
+
+.gallery-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    padding: 0 4rem;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    background: #fff;
+    padding: 1rem;
+    border: 2px solid #000;
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border-radius: 0;
+    height: auto;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 12px 12px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    border-color: #000;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+}
+
+/* Netflix-style Horizontal Rows */
+.netflix-rows {
+    margin-top: 4rem;
+}
+
+.netflix-row {
+    margin-bottom: 3rem;
+}
+
+.row-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 1rem 4rem;
+    text-shadow: 2px 2px 0px #fff;
+}
+
+.row-container {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 4rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.3) transparent;
+}
+
+.row-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.row-container::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+}
+
+.row-container::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+.row-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.5);
+}
+
+.row-content {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.row-item {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 113px;
+    background: #fff;
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.row-item:hover {
+    transform: scale(1.05);
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.row-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+}
+
+/* Part 5: The Handover (Bio) - Article Style Layout */
+.bio-article {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 4rem;
+    
+    /* Solid Y2K Pink Background */
+    background-color: #d9a9c9;
+}
+
+/* Article Header - Clean */
+.article-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.profile-image-wrapper {
+    width: clamp(120px, 20vw, 200px);
+    height: clamp(120px, 20vw, 200px);
+    margin: 0 auto 1.5rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: #4b0082;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+}
+
+.article-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-weight: 300;
+    text-align: center;
+    color: #000;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Article Content - Clean Layout */
+.article-content {
+    width: 90%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.story-section {
+    margin-bottom: 3rem;
+}
+
+.section-heading {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 0px #fff;
+    border-bottom: 2px solid #4b0082;
+    padding-bottom: 0.5rem;
+}
+
+.article-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 400;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #000;
+    text-align: justify;
+    width: 100%;
+}
+
+/* Article Footer - Clean */
+.article-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 2px solid #4b0082;
+    text-align: center;
+}
+
+.contact-links {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.contact-link {
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.contact-link:hover {
+    color: #4b0082;
+    border-color: #4b0082;
+}
+
+.separator {
+    color: #000;
+    margin: 0 8px;
+}
+
+.footer-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #4b0082;
+}
+
+/* Responsive adjustments - Clean */
+@media (max-width: 768px) {
+    .bio-article {
+        padding-top: 100px;
+        padding-bottom: 2rem;
+    }
+    
+    .article-header {
+        margin-bottom: 2rem;
+    }
+    
+    .article-content {
+        width: 95%;
+        padding: 0 0.5rem;
+    }
+    
+    .story-section {
+        margin-bottom: 2rem;
+    }
+    
+    .article-footer {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+    
+    .contact-links {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    }
+    
+    .footer-signature {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .bio-article {
+        padding-top: 80px;
+        padding-bottom: 1rem;
+    }
+    
+    .article-header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .article-content {
+        width: 98%;
+        padding: 0 0.25rem;
+    }
+    
+    .story-section {
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-heading {
+        margin-bottom: 1rem;
+        padding-bottom: 0.3rem;
+    }
+    
+    .article-text {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    
+    .article-footer {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .article-header {
+        margin-bottom: 4rem;
+        padding: 0 2rem;
+    }
+    
+    .article-content {
+        width: 85%;
+        padding: 0 2rem;
+    }
+    
+    .story-section {
+        margin-bottom: 4rem;
+    }
+    
+    .article-footer {
+        margin-top: 4rem;
+        padding-top: 2.5rem;
+    }
+}

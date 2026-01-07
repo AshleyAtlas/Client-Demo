@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meech O'Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for that Y2K/Cinematic feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main id="app">
+        <!-- Part 1: Hero Section -->
+        <section class="hero-section">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="intro-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="logo-overlay">
+            <h1 class="hero-title">Meech O'Clock</h1>
+        </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Navigation HTML
+        const navHTML = `
+            <div class="cheetah-header"></div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav class="global-nav" id="globalNav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link nav-home">Home</a></li>
+                    <li><a href="world.html" class="nav-link nav-world">World Tour</a></li>
+                    <li><a href="diary.html" class="nav-link nav-diary">Visual Diary</a></li>
+                    <li><a href="about.html" class="nav-link nav-story">The Story</a></li>
+                </ul>
+            </nav>
+        `;
+
+        document.body.insertAdjacentHTML('afterbegin', navHTML);
+
+        // Navigation logic
+        const toggle = document.getElementById('navToggle');
+        const nav = document.getElementById('globalNav');
+        const path = window.location.pathname.split('/').pop().replace(/\.html$/, '') || 'index';
+
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            const linkPath = link.getAttribute('href').replace(/^\/|\.html$/g, '');
+            if (linkPath === path || (linkPath === '' && path === 'index')) {
+                link.classList.add('active-page');
+            }
+        });
+
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+            document.body.classList.toggle('nav-open');
+        });
+    </script>
+</body>
+</html>

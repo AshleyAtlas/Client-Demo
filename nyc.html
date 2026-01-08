@@ -2,79 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NYC | Meech O’Clock</title>
+  <title>NYC | Meech O'Clock</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="style.css" />
-
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background-image: url("assets/panther_pattern.png");
-      background-repeat: repeat;
-      color: white;
-    }
-
-    .city-page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 120px 40px;
-    }
-
-    .city-close {
-      position: fixed;
-      top: 20px;
-      right: 24px;
-      font-size: 26px;
-      color: white;
-      text-decoration: none;
-      z-index: 10;
-    }
-
-    /* CENTERED TITLE */
-    .city-title {
-      margin-bottom: 120px;
-      font-size: 56px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: #8a2be2;
-      text-align: center;
-      text-shadow:
-        -2px -2px 0 #000,
-         2px -2px 0 #000,
-        -2px  2px 0 #000,
-         2px  2px 0 #000;
-    }
-
-    /* FRAMES */
-    .media-frame {
-      background: #ffffff;
-      color: #000000;
-      border: 6px solid #ffffff;
-      box-shadow: 0 0 0 6px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 120px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .video-frame {
-      height: 380px;
-      max-width: 900px;
-      width: 100%;
-    }
-
-    .image-frame {
-      height: 320px;
-      max-width: 900px;
-      width: 100%;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Anton&display=swap" rel="stylesheet">
 </head>
 
 <body class="city-page">
@@ -84,14 +18,15 @@
   <h1 class="city-title">NEW YORK CITY</h1>
 
   <div class="media-frame video-frame">
-    VIDEO
+    <video controls style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding: 20px; text-align: center; color: #000;\'>Video unavailable. Please try again later.</div>'">
+      <source src="intro-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 
   <div class="media-frame image-frame">
-    IMAGES
+    <img src="assets/4.png" alt="New York City" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'padding: 20px; text-align: center; color: #000;\'>Image unavailable. Please try again later.</div>'">
   </div>
 
-  <script src="nav.js"></script>
-  <script src="main.js"></script>
 </body>
 </html>

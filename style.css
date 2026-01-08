@@ -7,17 +7,27 @@
 }
 
 body {
-    background-color: #000000; /* Deep Black */
-    /* Subtle Cheetah Pattern Global */
+    /* Pink Panther Background for all pages by default */
+    background-color: #d9a9c9; /* Pastel Pink */
     background-image: url('assets/panther_pattern.png');
     background-repeat: repeat;
     background-size: 300px;
     background-blend-mode: overlay;
-    /* Use a dark gradient to blend the pattern down to subtlety */
-    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('assets/panther_pattern.png'); 
+    background: linear-gradient(rgba(217, 169, 201, 0.9), rgba(217, 169, 201, 0.9)), url('assets/panther_pattern.png');
     background-attachment: fixed;
     color: #fff;
     overflow-x: hidden;
+}
+
+/* Special class for about.html to override the pink background */
+body.about-page {
+    background-color: #000000; /* Deep Black */
+    background-image: url('assets/panther_pattern.png');
+    background-repeat: repeat;
+    background-size: 300px;
+    background-blend-mode: overlay;
+    background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('assets/panther_pattern.png');
+    background-attachment: fixed;
 }
 
 html {
@@ -122,6 +132,14 @@ html {
     color: #ff3b3b;
     transform: scale(1.1);
     text-shadow: 0 0 20px #ff3b3b;
+}
+
+/* Active Page Styling */
+.nav-link.active-page {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    font-weight: bold;
 }
 
 
@@ -463,6 +481,7 @@ html {
     padding: 0 4rem;
     scrollbar-width: thin;
     scrollbar-color: rgba(0,0,0,0.3) transparent;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .row-container::-webkit-scrollbar {
@@ -513,6 +532,54 @@ html {
     height: 100%;
     object-fit: cover;
     filter: none;
+}
+
+/* Mobile responsiveness for Netflix rows */
+@media (max-width: 768px) {
+    .row-title {
+        font-size: 1.5rem;
+        margin: 0 0 1rem 2rem;
+    }
+    
+    .row-container {
+        padding: 0 2rem;
+    }
+    
+    .row-item {
+        width: 150px;
+        height: 85px;
+    }
+    
+    .row-content {
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .row-title {
+        font-size: 1.2rem;
+        margin: 0 0 1rem 1rem;
+    }
+    
+    .row-container {
+        padding: 0 1rem;
+    }
+    
+    .row-item {
+        width: 120px;
+        height: 68px;
+        border-width: 1px;
+        box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    }
+    
+    .row-content {
+        gap: 0.5rem;
+    }
+    
+    .row-item:hover {
+        transform: scale(1.02);
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+    }
 }
 
 /* Part 5: The Handover (Bio) - Article Style Layout */
@@ -709,6 +776,116 @@ html {
     .article-footer {
         margin-top: 1.5rem;
         padding-top: 1rem;
+    }
+}
+
+/* --- City Pages --- */
+.city-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 40px;
+}
+
+.city-close {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    font-size: 26px;
+    color: white;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.city-title {
+    margin-bottom: 120px;
+    font-size: 56px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a2be2;
+    text-align: center;
+    text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000;
+}
+
+.media-frame {
+    background: #ffffff;
+    color: #000000;
+    border: 6px solid #ffffff;
+    box-shadow: 0 0 0 6px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 120px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.video-frame {
+    height: 380px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.image-frame {
+    height: 320px;
+    max-width: 900px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .city-page {
+        padding: 80px 20px;
+    }
+    
+    .city-title {
+        font-size: 36px;
+        margin-bottom: 60px;
+    }
+    
+    .video-frame {
+        height: 250px;
+    }
+    
+    .image-frame {
+        height: 200px;
+    }
+    
+    .media-frame {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-page {
+        padding: 60px 15px;
+    }
+    
+    .city-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+    
+    .video-frame {
+        height: 200px;
+    }
+    
+    .image-frame {
+        height: 160px;
+    }
+    
+    .media-frame {
+        margin-bottom: 40px;
+    }
+    
+    .city-close {
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
     }
 }
 

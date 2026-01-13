@@ -44,29 +44,100 @@
       <div class="map-container">
         <img src="assets/image.png" alt="World Map" class="world-map">
 
-        <a href="LA.html" class="map-pin" style="top:50%; left:15%;">
+        <div class="map-pin" data-city="los-angeles" style="top:50%; left:15%;">
           <span>Los Angeles</span>
-        </a>
+        </div>
 
-        <a href="nyc.html" class="map-pin" style="top:40%; left:82%;">
+        <div class="map-pin" data-city="new-york-city" style="top:40%; left:82%;">
           <span>New York City</span>
-        </a>
+        </div>
 
-        <a href="Indiana.html" class="map-pin" style="top:45%; left:65%;">
+        <div class="map-pin" data-city="indiana" style="top:45%; left:65%;">
           <span>Indiana</span>
-        </a>
+        </div>
 
-        <a href="Florida.html" class="map-pin" style="top:75%; left:75%;">
+        <div class="map-pin" data-city="florida" style="top:75%; left:75%;">
           <span>Florida</span>
-        </a>
+        </div>
 
-        <a href="Texas.html" class="map-pin" style="top:65%; left:45%;">
+        <div class="map-pin" data-city="texas" style="top:65%; left:45%;">
           <span>Texas</span>
-        </a>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- City Modal -->
+  <div id="cityModal" class="city-modal">
+    <div class="modal-content">
+      <video id="modalVideo" controls autoplay muted playsinline style="width: 100%; max-width: 800px; height: auto;">
+        <source src="intro-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
   <script src="navigation.js"></script>
+  <script>
+    // City Modal functionality
+    (function() {
+      'use strict';
+      
+      // Get DOM elements
+      const modal = document.getElementById('cityModal');
+      const modalVideo = document.getElementById('modalVideo');
+      const mapPins = document.querySelectorAll('.map-pin');
+      
+      // Open modal function
+      function openModal() {
+        // Reset video to start
+        modalVideo.currentTime = 0;
+        
+        // Show modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Close modal function
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Pause video when closing
+        modalVideo.pause();
+        
+        // Reset playback time to 0
+        modalVideo.currentTime = 0;
+      }
+      
+      // Event listeners for map pins
+      mapPins.forEach(pin => {
+        pin.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal();
+        });
+      });
+      
+      // Close modal when clicking outside content
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+      
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+      
+      // Handle video errors
+      modalVideo.addEventListener('error', function() {
+        console.log('Video failed to load');
+      });
+      
+    })();
+  </script>
 </body>
 </html>
